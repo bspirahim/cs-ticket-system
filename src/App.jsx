@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="">
       <Navbar></Navbar>
-      <main className="max-w-[1280px] mx-auto">
+      <main className="max-w-[1440px] mx-auto">
         <Banner></Banner>
         <Suspense fallback={<p>tickets data...</p>}>
           <TicketsDashboard ticketPromise={ticketPromise}></TicketsDashboard>
