@@ -9,7 +9,7 @@ const SelectedTask = ({ task, handleCompletedTask }) => {
     <div>
       <div className="flex flex-col mb-4">
         <div className="bg-white rounded-md shadow-sm p-4">
-          <p className="text-lg font-medium text-[#001931] mb-2">
+          <p className="text-md md:text-lg font-medium text-[#001931] mb-2">
             {task.title}
           </p>
           <button

@@ -5,7 +5,7 @@ const Banner = ({ selectedTasks, resolvedTasks }) => {
   console.log(selectedTasks);
 
   return (
-    <div className="my-10">
+    <div className="mb-10 md:mb-14">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         <div className="relative">
           <img src={pendingBg} alt="" className="w-full h-full object-cover" />

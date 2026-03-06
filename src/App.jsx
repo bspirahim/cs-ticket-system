@@ -5,6 +5,7 @@ import Navbar from "./component/Navbar";
 import TicketsDashboard from "./component/TicketsDashboard";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "./component/Footer";
 
 const fetchTickets = async () => {
   const res = await fetch("/tickets.json");
@@ -30,6 +31,7 @@ function App() {
     }
   };
 
+  // for completed task
   const handleCompletedTask = (taskId) => {
     const completedTask = selectedTasks.find((task) => task.id === taskId);
     setSelectedTasks((prev) => prev.filter((task) => task.id !== taskId));
@@ -43,7 +45,7 @@ function App() {
   return (
     <div className="">
       <Navbar></Navbar>
-      <main className="max-w-[1440px] mx-auto">
+      <main className="max-w-[1440px] mx-auto my-14 px-6 md:px-0">
         <Banner
           selectedTasks={selectedTasks}
           resolvedTasks={resolvedTasks}
@@ -58,6 +60,7 @@ function App() {
           ></TicketsDashboard>
         </Suspense>
       </main>
+      <Footer></Footer>
       <ToastContainer
         position="top-right"
         autoClose={2000}

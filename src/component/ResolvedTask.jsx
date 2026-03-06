@@ -6,7 +6,7 @@ const ResolvedTask = ({task}) => {
     <div>
       <div className="flex flex-col gap-6">
         <div className="rounded-md shadow-sm p-4 bg-[#E0E7FF] mb-4">
-          <p className="text-lg font-medium text-[#001931]">
+          <p className="text-md md:text-lg font-medium text-[#001931]">
            {task.title}
           </p>
         </div>

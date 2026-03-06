@@ -37,9 +37,9 @@ const TicketsDashboard = ({
           {/* Right Sidebar: Status/Filter */}
           {/* Right Sidebar */}
 
-          <div className=" p-4 rounded-lg h-fit flex flex-col gap-6">
+          <div className="rounded-lg h-fit flex flex-col gap-6">
             <div>
-              <h2 className="text-2xl text-[#34485A] font-semibold mb-2">
+              <h2 className="text-lg md:text-2xl text-[#34485A] font-semibold mb-2">
                 Task Status
               </h2>
 
@@ -57,7 +57,7 @@ const TicketsDashboard = ({
 
             {/* Resolved Task */}
             <div>
-              <h2 className="text-2xl text-[#34485A] font-semibold mb-2">
+              <h2 className="text-lg md:text-2xl  text-[#34485A] font-semibold mb-2">
                 Resolved Task
               </h2>
               {resolvedTasks.length === 0 ? (
