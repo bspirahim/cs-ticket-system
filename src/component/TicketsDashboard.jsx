@@ -1,10 +1,14 @@
 import React, { use } from "react";
 import TicketCard from "./TicketCard";
+import SelectedTask from "./SelectedTask";
+import ResolvedTask from "./ResolvedTask";
 
 const TicketsDashboard = ({
   ticketPromise,
   handleAddedTask,
-  selectedTickets,
+  handleCompletedTask,
+  selectedTasks,
+  resolvedTasks,
 }) => {
   const tickets = use(ticketPromise);
 
@@ -39,20 +43,14 @@ const TicketsDashboard = ({
                 Task Status
               </h2>
 
-              {selectedTickets.length === 0 ? (
+              {selectedTasks.length === 0 ? (
                 <p>Select a ticket to add to Task Status</p>
               ) : (
-                selectedTickets.map((st) => (
-                  <div className="flex flex-col mb-4">
-                    <div className="bg-white rounded-md shadow-sm p-4">
-                      <p className="text-lg font-medium text-[#001931] mb-2">
-                        {st.title}
-                      </p>
-                      <button className="btn bg-[#02A53B] text-sm text-white w-full">
-                        Complete
-                      </button>
-                    </div>
-                  </div>
+                selectedTasks.map((task) => (
+                  <SelectedTask
+                    task={task}
+                    handleCompletedTask={handleCompletedTask}
+                  ></SelectedTask>
                 ))
               )}
             </div>
@@ -62,13 +60,13 @@ const TicketsDashboard = ({
               <h2 className="text-2xl text-[#34485A] font-semibold mb-2">
                 Resolved Task
               </h2>
-              <div className="flex flex-col gap-6">
-                <div className="rounded-md shadow-sm p-4 bg-[#E0E7FF]">
-                  <p className="text-lg font-medium text-[#001931]">
-                    Payment Failed - Card Declined
-                  </p>
-                </div>
-              </div>
+              {resolvedTasks.length === 0 ? (
+                <p>No resolved tasks yet.</p>
+              ) : (
+                resolvedTasks.map((task) => (
+                  <ResolvedTask task={task}></ResolvedTask>
+                ))
+              )}
             </div>
           </div>
         </div>

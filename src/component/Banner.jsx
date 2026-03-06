@@ -1,9 +1,9 @@
 import pendingBg from "../assets/pending-bg.png";
 import resolvedBg from "../assets/resolved-bg.png";
 
-const Banner = () => {
+const Banner = ({ selectedTasks, resolvedTasks }) => {
+  console.log(selectedTasks);
 
- 
   return (
     <div className="my-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -13,12 +13,9 @@ const Banner = () => {
             <h2 className="text-lg sm:text-xl md:text-2xl text-white">
               In-Progress
             </h2>
-
-            {/* {selectedTickets.map((st) => (
-              <p className="text-4xl sm:text-5xl md:text-6xl font-semibold text-white">
-                0
-              </p>
-            ))} */}
+            <p className="text-4xl sm:text-5xl md:text-6xl font-semibold text-white">
+              {selectedTasks.length}
+            </p>
           </div>
         </div>
 
@@ -29,7 +26,7 @@ const Banner = () => {
               Resolved
             </h2>
             <p className="text-4xl sm:text-5xl md:text-6xl font-semibold text-white">
-              0
+              {resolvedTasks.length}
             </p>
           </div>
         </div>

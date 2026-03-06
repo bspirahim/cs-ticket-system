@@ -12,18 +12,41 @@ const fetchTickets = async () => {
 const ticketPromise = fetchTickets();
 
 function App() {
-  const [selectedTickets, setSelectedTickets] = useState([]);
+  const [selectedTasks, setSelectedTasks] = useState([]);
+  const [resolvedTasks, setResolvedTasks] = useState([]);
+
+  // for task status
   const handleAddedTask = (ticket) => {
-    setSelectedTickets((prev) => [...prev, ticket]);
+    const exitsTicket = selectedTasks.find((t) => t.id === ticket.id);
+    if (exitsTicket) {
+      alert("This ticket already added on the task list");
+    } else {
+      setSelectedTasks((prev) => [...prev, ticket]);
+    }
   };
+
+  const handleCompletedTask = (taskId) => {
+    const completedTask = selectedTasks.find((task) => task.id === taskId);
+    setSelectedTasks((prev) => prev.filter((task) => task.id !== taskId));
+    setResolvedTasks((prev) => [...prev, completedTask]);
+    console.log("resolve task", taskId);
+  };
+
+  console.log(resolvedTasks)
 
   return (
     <div className="">
       <Navbar></Navbar>
       <main className="max-w-[1440px] mx-auto">
-        <Banner selectedTickets={selectedTickets}></Banner>
+        <Banner selectedTasks={selectedTasks} resolvedTasks={resolvedTasks}></Banner>
         <Suspense fallback={<p>tickets data...</p>}>
-          <TicketsDashboard handleAddedTask={handleAddedTask} selectedTickets={selectedTickets} ticketPromise={ticketPromise}></TicketsDashboard>
+          <TicketsDashboard
+            handleAddedTask={handleAddedTask}
+            handleCompletedTask={handleCompletedTask}
+            selectedTasks={selectedTasks}
+            resolvedTasks={resolvedTasks}
+            ticketPromise={ticketPromise}
+          ></TicketsDashboard>
         </Suspense>
       </main>
     </div>
